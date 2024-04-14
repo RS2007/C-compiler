@@ -20,12 +20,13 @@ I don't have a good answer for this question, primarily memory safety(duh!!), bu
 - I have zero clue,but hopefully in a span of an year.
 
 ## Plan as of now:
-- Parser/Lexer for a C subset 
-- SSA design + build (Design is a strong word, probably a salad of design decisions from existing SSA bsaed IRs)
-- SSA based optimizations: (Sparse conditional constant propogation + Constant Folding +  Comman SubExpression Elimination)
-- Liveness Analysis + Register allocation + Peephole
-- Codegen to ARM -> Assembler -> .o file
-- .o file -> Linker -> Elf executable
+* Parser/Lexer for a C subset 
+* SSA design + build (Design is a strong word, probably a salad of design decisions from existing SSA bsaed IRs)
+* SSA based optimizations: (Sparse conditional constant propogation + Constant Folding +  Comman SubExpression Elimination)
+* Function inling with an `inline` directive 
+* Liveness Analysis + Register allocation + Peephole
+* Codegen to ARM -> Assembler -> .o file
+* .o file -> Linker -> Elf executable
 
 
 ## References

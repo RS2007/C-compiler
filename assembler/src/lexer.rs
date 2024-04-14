@@ -1,6 +1,6 @@
 use std::{iter::Peekable, str::Chars};
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum TokenType {
     Semicolon,
     AddInst,
@@ -27,16 +27,16 @@ pub enum TokenType {
     Bang,
 }
 
-#[derive(Debug, PartialEq)]
-struct Token {
-    token_type: TokenType,
-    line: u64,
-    col: u64,
+#[derive(Debug, PartialEq, Clone)]
+pub struct Token {
+    pub(crate) token_type: TokenType,
+    pub(crate) line: u64,
+    pub(crate) col: u64,
 }
 
 pub struct Lexer {
     input: &'static str,
-    tokens: Vec<Token>,
+    pub(crate) tokens: Vec<Token>,
 }
 
 fn lex_identifier(iter: &mut Peekable<Chars<'static>>, col: &mut u64) -> Box<String> {

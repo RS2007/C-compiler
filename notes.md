@@ -22,13 +22,16 @@
 ```bnf
 <program> ::= <instruction>*
 
-<instruction> ::= <label>? <opcode> <operand>* ';'?
+<instruction> ::= <label>? <opcode> <operand> <operandRest>* 
+
 
 <label> ::= <identifier> ':'
 
 <opcode> ::= 'ADD' | 'SUB' | 'MUL' | 'DIV' | 'MOV' | 'LDR' | 'STR' | 'B' | 'BL' | 'CBZ' | 'CBNZ' | 'CMP' | 'RET' | 'NOP'
 
 <operand> ::= <register> | <immediate> | <memory_access>
+
+<operandRest> ::= ',' <operand>
 
 <register> ::= 'X0' | 'X1' | 'X2' | ... | 'X30' | 'SP' | 'XZR'
 
