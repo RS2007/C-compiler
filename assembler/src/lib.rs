@@ -1,3 +1,4 @@
+mod encoder;
 mod lexer;
 mod parser;
 pub fn add(left: usize, right: usize) -> usize {

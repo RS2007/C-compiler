@@ -4,22 +4,22 @@ pub struct Parser {
 }
 
 pub struct Program {
-    instructions: Vec<Instruction>,
+    pub(crate) instructions: Vec<Instruction>,
 }
 pub struct Instruction {
-    label: Option<Token>,
-    opcode: Token,
-    operands: Vec<Token>,
+    pub(crate) label: Option<Token>,
+    pub(crate) opcode: Token,
+    pub(crate) operands: Vec<Token>,
 }
 
 impl Parser {
-    fn new(tokens: Vec<Token>) -> Self {
+    pub(crate) fn new(tokens: Vec<Token>) -> Self {
         Parser { tokens }
     }
 
-    fn parse_program(self: &mut Self) -> Result<Program, ()> {
+    pub(crate) fn parse_program(self: &mut Self) -> Result<Program, ()> {
         let mut instructions: Vec<Instruction> = vec![];
-        while (self.tokens.len() > 0) {
+        while self.tokens.len() > 0 {
             let instruction = self.parse_instruction()?;
             instructions.push(instruction);
         }
@@ -84,7 +84,6 @@ impl Parser {
     }
 
     fn parse_operands(self: &mut Self) -> Result<Vec<Token>, ()> {
-        let mut operands: Vec<Token> = vec![];
         let operand = self.parse_operand()?;
         let mut operands = self.parse_operands_rest()?;
         operands.insert(0, operand);
